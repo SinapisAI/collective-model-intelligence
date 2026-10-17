@@ -1,6 +1,6 @@
 """Fit the report's 12 distinct public baselines from the public data interface.
 
-This command trains on train only. Development groups are excluded by the
+This command trains on train only. The official test split is scored by the
 report evaluator. Mio training is private and uses a separate prediction replay.
 """
 
@@ -140,6 +140,12 @@ def main() -> None:
     }
     if train_groups & evaluation_groups:
         raise ValueError("Training and evaluation source groups overlap")
+    validation_groups = {
+        source_group(query, row, args.scenario)
+        for query, row in zip(validation.query_ids, validation.metadata, strict=True)
+    }
+    if validation_groups & (train_groups | evaluation_groups):
+        raise ValueError("Validation source groups must be separate from train and test")
     cost_unit = "CNY" if args.scenario == "chinese" else "USD"
     cost = np.asarray(train.cost_cny / (7.2 if cost_unit == "USD" else 1), dtype=np.float32)
     latency = np.asarray(train.latency_ms, dtype=np.float32)

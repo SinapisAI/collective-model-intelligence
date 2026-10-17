@@ -1,8 +1,8 @@
 # RobustRouteBench
 
 The dataset is hosted at [SinapisAI/RobustRouteBench](https://huggingface.co/datasets/SinapisAI/RobustRouteBench).
-The loader pins release `v1.1.2-20261015`, revision `e05b897bf3b92bc9913409959a150f75cecbb427`.
-It contains **35,278 scenario-level instances** across Text (63 models), Multimodal (45),
+The loader pins an immutable dataset revision for reproducible experiments.
+It contains **35,072 scenario-level instances** across Text (63 models), Multimodal (45),
 and Chinese (10). These are separate candidate pools, not a unique-model total.
 
 ```python
@@ -41,21 +41,26 @@ To inspect images, rebuild features, or re-evaluate visual models, use
 | Subset argument | Archive | Role |
 | --- | --- | --- |
 | `"train"` | `media/multimodal/train.zip` | Training |
+| `"validation"` | `media/multimodal/validation.zip` | Configuration selection |
 | `"standard"` | `media/multimodal/standard_test.zip` | Standard test |
 | `"robust"` | `media/multimodal/robust_test.zip` | Robustness test |
 
 For example, `download_multimodal_media("standard")` downloads the standard-test archive
-from the same pinned dataset repository. Filenames are resolved from that revision's
-manifest, so explicitly selected older revisions also remain usable. Validation is an
-overlay of the two test populations, not a separate media archive.
-Preserve the dataset's [upstream licenses](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/blob/e05b897bf3b92bc9913409959a150f75cecbb427/LICENSES.md).
+from the same pinned dataset repository. Filenames and checksums are recorded in the
+dataset manifest. Each archive contains its role's requests, images, and reference annotations.
+Preserve the dataset's [upstream licenses](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/blob/03bd3da2c3bb4a998f73d285c8853c721697e3cb/LICENSES.md).
 
 ## Evaluation split
 
-**Validation overlaps published test.** Every scenario has a 500-row validation overlay
-(400 standard + 100 robust). Final scoring must exclude every validation source group and
-its linked variants, leaving **18,982 requests** across the three scenarios. Removing only
-flagged validation rows is insufficient. The basic loader leaves published splits unchanged;
-the report reproduction commands perform the required exclusions.
+Every scenario provides `train`, `validation`, and `test`. Validation contains 500 requests
+(400 standard + 100 robust) for configuration selection. All **18,982 test requests** are
+scored directly, with no additional filtering. The test split is separate from validation
+by request ID and the declared source-group identifiers.
+
+| Scenario | Train | Validation | Standard test | Robust test |
+| --- | ---: | ---: | ---: | ---: |
+| Text | 3,000 | 500 | 3,688 | 2,894 |
+| Multimodal | 4,000 | 500 | 4,600 | 1,900 |
+| Chinese | 7,590 | 500 | 3,900 | 2,000 |
 
 See [split discipline and units](../docs/reproducibility.md#split-discipline).

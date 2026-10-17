@@ -32,7 +32,7 @@
 
 ## RobustRouteBench
 
-RobustRouteBench 包含 **35,278 个实例**，分为 General Text（63 个候选模型）、Multimodal（45 个）和 Chinese（10 个）。排除开发源组及关联变体后，报告最终测试保留 **18,982 个请求**。
+RobustRouteBench 包含 **35,072 个实例**，分为 General Text（63 个候选模型）、Multimodal（45 个）和 Chinese（10 个），其中训练集 **14,590 条**、验证集 **1,500 条**、测试集 **18,982 条**。测试集直接对应报告的评测样本，无需再次筛选。
 
 使用 **Python 3.10+**，无需模型 API Key。
 
@@ -47,7 +47,7 @@ python examples/quickstart.py --scenario text  # 训练并评测 validation
 
 其他场景使用 `--scenario multimodal` 或 `--scenario chinese`。
 
-按报告的样本排除规则与 nominal-budget nAUC，回放 **13 个方法的 65 份预测**：
+在正式测试集上，按报告的 nominal-budget nAUC 回放 **13 个方法的 65 份预测**：
 
 ```sh
 python -m examples.reproduce_report --mode replay --output runs/report-replay
@@ -68,4 +68,4 @@ python -m examples.reproduce_report --mode replay --output runs/report-replay
 }
 ```
 
-引用信息见 [CITATION.cff](CITATION.cff)。代码采用 [Apache-2.0](LICENSE)，ORBIT 衍生部分保留 [MIT](methods/orbit/LICENSE)；数据集遵循[上游条款](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/blob/e05b897bf3b92bc9913409959a150f75cecbb427/LICENSES.md)，报告与内嵌标识保留各自署名。
+引用信息见 [CITATION.cff](CITATION.cff)。代码采用 [Apache-2.0](LICENSE)，ORBIT 衍生部分保留 [MIT](methods/orbit/LICENSE)；数据集遵循[上游条款](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/blob/03bd3da2c3bb4a998f73d285c8853c721697e3cb/LICENSES.md)，报告与内嵌标识保留各自署名。

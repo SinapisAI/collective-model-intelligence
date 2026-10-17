@@ -32,7 +32,7 @@ Across nine equally weighted public benchmarks, Mio 1.0 Lite achieves an average
 
 ## RobustRouteBench
 
-RobustRouteBench contains **35,278 instances** across General Text (63 candidate models), Multimodal (45), and Chinese (10). Final report scoring retains **18,982 requests** after excluding development source groups and linked variants.
+RobustRouteBench contains **35,072 instances** across General Text (63 candidate models), Multimodal (45), and Chinese (10): **14,590 training**, **1,500 validation**, and **18,982 test requests**. The test split directly matches the report's evaluation population.
 
 Use **Python 3.10+**. The examples need no model API key.
 
@@ -47,7 +47,7 @@ python examples/quickstart.py --scenario text  # train and evaluate on validatio
 
 Other scenarios: `--scenario multimodal` or `--scenario chinese`.
 
-Replay the **65 prediction runs across 13 methods** with the report's split exclusions and nominal-budget nAUC:
+Replay the **65 prediction runs across 13 methods** on the official test split using the report's nominal-budget nAUC:
 
 ```sh
 python -m examples.reproduce_report --mode replay --output runs/report-replay
@@ -68,4 +68,4 @@ python -m examples.reproduce_report --mode replay --output runs/report-replay
 }
 ```
 
-Citation metadata: [CITATION.cff](CITATION.cff). Code uses [Apache-2.0](LICENSE), with [MIT-licensed ORBIT components](methods/orbit/LICENSE). The dataset follows its [upstream terms](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/blob/e05b897bf3b92bc9913409959a150f75cecbb427/LICENSES.md); report materials and embedded logos retain their attribution.
+Citation metadata: [CITATION.cff](CITATION.cff). Code uses [Apache-2.0](LICENSE), with [MIT-licensed ORBIT components](methods/orbit/LICENSE). The dataset follows its [upstream terms](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/blob/03bd3da2c3bb4a998f73d285c8853c721697e3cb/LICENSES.md); report materials and embedded logos retain their attribution.

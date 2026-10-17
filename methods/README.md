@@ -54,4 +54,4 @@ router = train_orbit_router(
 ```
 
 See the [reproduction guide](../docs/reproducibility.md) for fitting all baselines and
-using the report's split exclusions, nominal-budget metric, and scenario-specific units.
+using the official test split, nominal-budget metric, and scenario-specific units.

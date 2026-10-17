@@ -13,11 +13,12 @@ import numpy as np
 from numpy.typing import NDArray
 
 DATASET_ID = "SinapisAI/RobustRouteBench"
-DEFAULT_REVISION = "e05b897bf3b92bc9913409959a150f75cecbb427"
+DEFAULT_REVISION = "03bd3da2c3bb4a998f73d285c8853c721697e3cb"
 SCENARIOS = ("text", "multimodal", "chinese")
 SPLITS = ("train", "validation", "test")
 MULTIMODAL_MEDIA = {
     "train": "media/multimodal/train.zip",
+    "validation": "media/multimodal/validation.zip",
     "standard": "media/multimodal/standard_test.zip",
     "robust": "media/multimodal/robust_test.zip",
 }
@@ -276,11 +277,7 @@ def download_multimodal_media(
     local_dir: str | Path | None = None,
     token: str | bool | None = None,
 ) -> Path:
-    """Download optional original media for train, standard, or robust requests.
-
-    Resolve filenames from the selected revision's manifest, so explicit older
-    revisions remain usable after packaging-only archive renames.
-    """
+    """Download optional media for train, validation, standard, or robust requests."""
 
     if subset not in MULTIMODAL_MEDIA:
         raise ValueError(

@@ -52,7 +52,7 @@ Query populations are defined transductively using all 35 models, and the five e
 
 ## RobustRouteBench: robustness is scenario dependent
 
-Report §6.3 evaluates the request-level **Mio selector**, trained separately per scenario, against **12 baselines**. The dataset is release `v1.1.2-20261015`; see the [split protocol](reproducibility.md#split-discipline) for its revision, score corrections, and development-group exclusions.
+Report §6.3 evaluates the request-level **Mio selector**, trained separately per scenario, against **12 baselines**. See the [split protocol](reproducibility.md#split-discipline) for the dataset identifier and official training, validation, and test populations.
 
 All Multimodal methods share frozen **CLIP ViT-B/32** features: pool full-text chunks and all request images separately, normalize the pools, concatenate, and apply equal modality weights. This produces 1,024-dimensional late-fusion features. Multimodal uses three fits; General Text and Chinese use one.
 
@@ -73,9 +73,9 @@ The figure is retained as a supplementary artifact; the current report presents 
 
 nAUC integrates the cumulative-maximum quality curve on the **linear nominal-budget axis**, with no inserted fixed-model points. The supplementary figure displays realized cost on a logarithmic axis. These axes have different meanings; the badge is not the geometric area under that display. `Cost@τ` is the minimum realized cost of actual selector points meeting the target. [Metric definitions and runnable reproduction →](reproducibility.md#metric-compatibility)
 
-Development source groups and linked variants are excluded from final scoring; predictions are aligned by query ID. Baseline configurations are fixed while Mio configurations are development selected, with unmatched search budgets.
+Every official test request contributes to scoring; predictions are aligned by query ID. Baseline configurations are fixed while Mio configurations are selected using validation, with unmatched search budgets.
 
-Data: [published curves, metrics, and split audit](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/blob/e05b897bf3b92bc9913409959a150f75cecbb427/report/aggregate-results.json). [Reproduction protocol](reproducibility.md).
+Data: [published curves, metrics, and split audit](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/blob/03bd3da2c3bb4a998f73d285c8853c721697e3cb/report/aggregate-results.json). [Reproduction protocol](reproducibility.md).
 
 ## Mos: model-file distribution
 

@@ -27,37 +27,36 @@ not promised to be bitwise identical. Commands refuse to overwrite an existing o
 
 All methods use the released embeddings: BGE-M3 for Text/Chinese and 1,024-dimensional
 CLIP text/image fusion for Multimodal. No encoder weights or media downloads are needed.
-Data and frozen predictions are hosted in the [pinned dataset release](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/tree/e05b897bf3b92bc9913409959a150f75cecbb427).
+Data and frozen predictions are hosted in the [pinned dataset release](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/tree/03bd3da2c3bb4a998f73d285c8853c721697e3cb).
 Mio's internal trainer, the Model Eval implementation, and production Mos services are not released.
 The separate [Model Eval experimental settings](model-eval.md) document the characterization studies.
 
 The replay command compares the complete aggregate against the release's
-[reference results](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/blob/e05b897bf3b92bc9913409959a150f75cecbb427/report/aggregate-results.json)
+[reference results](https://huggingface.co/datasets/SinapisAI/RobustRouteBench/blob/03bd3da2c3bb4a998f73d285c8853c721697e3cb/report/aggregate-results.json)
 and stops on a mismatch. It writes per-run evaluations, an aggregate, and the data revision
 to the chosen output directory under `runs/`.
 
 ## Split discipline
 
-Data revision: `e05b897bf3b92bc9913409959a150f75cecbb427`, release `v1.1.2-20261015`.
-Each 500-row validation split (400 standard + 100 robust) remains in the published test split.
-After tuning, final scoring must exclude **every validation source group and its linked variants**.
-The reproduction commands apply this exclusion; the basic loader returns splits unchanged.
+Data revision: `03bd3da2c3bb4a998f73d285c8853c721697e3cb`.
+Use `train` for fitting, `validation` for configuration selection, and `test` for evaluation.
+Every validation split contains 500 requests (400 standard + 100 robust). The official
+test split directly corresponds to the report: all its rows are scored, without filtering.
 
 Source grouping uses `base_query_id` when present, otherwise `query_id`, for Text/Chinese,
 and `source_sample_id` for Multimodal. Predictions are aligned by query ID and candidate-model
 ID. Test labels, realized costs, and oracle choices stay outside fitting and inference.
 
-| Scenario | Published test | Validation | Excluded with linked variants | Final standard | Final robust |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Text | 7,188 | 500 | 606 | 3,688 | 2,894 |
-| Multimodal | 7,000 | 500 | 500 | 4,600 | 1,900 |
-| Chinese | 6,500 | 500 | 600 | 3,900 | 2,000 |
+| Scenario | Train | Validation | Standard test | Robust test |
+| --- | ---: | ---: | ---: | ---: |
+| Text | 3,000 | 500 | 3,688 | 2,894 |
+| Multimodal | 4,000 | 500 | 4,600 | 1,900 |
+| Chinese | 7,590 | 500 | 3,900 | 2,000 |
 
-The final population is **18,982 requests**. Multimodal standard and robust populations are
+The test population is **18,982 requests**. Multimodal standard and robust populations are
 independently sampled; their difference is not a paired perturbation effect. Available metadata
-does not establish document- or repository-level disjointness. The corrected release restores
-only provenance-confirmed Text score regressions; failed requests remain zero, and other
-legacy outcomes were not independently regraded.
+does not establish document- or repository-level disjointness. Failed source requests have zero
+utility. The supplied outcomes follow their source-task scoring conventions.
 
 ## Metric compatibility
 

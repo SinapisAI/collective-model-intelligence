@@ -48,7 +48,7 @@ def load_predictions(path: Path, query_ids: tuple[str, ...]):
             raise ValueError(f"Prediction archive lacks identity-bearing arrays: {sorted(missing)}")
         ids = tuple(str(value) for value in data["query_ids"].tolist())
         if len(ids) != len(set(ids)) or set(ids) != set(query_ids):
-            raise ValueError("Prediction query IDs must match the complete published test split")
+            raise ValueError("Prediction query IDs must match the test split exactly")
         index = {query_id: position for position, query_id in enumerate(ids)}
         order = np.asarray([index[query_id] for query_id in query_ids])
         models = tuple(str(value) for value in data["model_ids"].tolist())
@@ -83,11 +83,11 @@ def evaluate_saved_predictions(
     *,
     cost_unit: str,
 ) -> dict:
-    """Exclude whole development groups, then evaluate each report population."""
+    """Evaluate all official test requests without filtering either split."""
     if test.scenario != validation.scenario or test.model_ids != validation.model_ids:
         raise ValueError("Test and validation must share scenario and candidate-model order")
     if test.split != "test" or validation.split != "validation":
-        raise ValueError("Expected published test and validation splits")
+        raise ValueError("Expected test and validation splits")
     expected_currency = "CNY" if test.scenario == "chinese" else "USD"
     if cost_unit != expected_currency:
         raise ValueError(f"Report {test.scenario} prediction costs must use {expected_currency}")
@@ -95,29 +95,21 @@ def evaluate_saved_predictions(
     if set(scores.model_ids) != set(test.model_ids):
         raise ValueError("Prediction candidate IDs do not match Hugging Face data")
     scenario = test.scenario
-    test_rows = dict(zip(test.query_ids, test.metadata, strict=True))
-    for query_id, row in zip(validation.query_ids, validation.metadata, strict=True):
-        if query_id not in test_rows:
-            raise ValueError("Validation must be an overlay of the published test split")
-        if source_group(query_id, row, scenario) != source_group(
-            query_id, test_rows[query_id], scenario
-        ):
-            raise ValueError("Validation and test source groups differ for the same query")
-    development = {
+    validation_groups = {
         source_group(query_id, row, scenario)
         for query_id, row in zip(validation.query_ids, validation.metadata, strict=True)
     }
-    groups = [
+    test_groups = {
         source_group(query_id, row, scenario)
         for query_id, row in zip(test.query_ids, test.metadata, strict=True)
-    ]
-    retained = np.asarray([index for index, group in enumerate(groups) if group not in development])
-    if not retained.size:
-        raise ValueError("Development exclusion leaves no evaluation requests")
-    for index in retained:
-        row = test.metadata[int(index)]
+    }
+    if set(test.query_ids) & set(validation.query_ids):
+        raise ValueError("Test and validation query IDs must be disjoint")
+    if test_groups & validation_groups:
+        raise ValueError("Test and validation source groups must be disjoint")
+    for row in test.metadata:
         if row.get("evaluation_type") not in {"standard", "robust"}:
-            raise ValueError("Every retained request must be standard or robust")
+            raise ValueError("Every test request must be standard or robust")
         if row["evaluation_type"] == "robust" and (
             not isinstance(row.get("variant_type"), str)
             or not row["variant_type"].strip()
@@ -126,7 +118,7 @@ def evaluate_saved_predictions(
             raise ValueError("Every robust request must declare a non-original variant_type")
     slices = {
         name: np.asarray(
-            [index for index in retained if test.metadata[int(index)]["evaluation_type"] == name],
+            [index for index, row in enumerate(test.metadata) if row["evaluation_type"] == name],
             dtype=np.int64,
         )
         for name in ("standard", "robust")
@@ -170,11 +162,10 @@ def evaluate_saved_predictions(
         "cost_unit": cost_unit,
         "splits": results,
         "split_audit": {
-            "original_evaluation_rows": test.num_queries,
-            "development_rows": validation.num_queries,
-            "excluded_evaluation_rows": test.num_queries - len(retained),
-            "final_evaluation_rows": len(retained),
-            "development_group_overlap": 0,
+            "test_rows": test.num_queries,
+            "validation_rows": validation.num_queries,
+            "validation_test_query_overlap": 0,
+            "validation_test_source_group_overlap": 0,
         },
     }
 

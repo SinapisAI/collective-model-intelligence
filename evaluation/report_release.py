@@ -99,7 +99,8 @@ def build_report_results(runs: dict, *, data_revision: str) -> dict:
             "auc_axis": "common nominal per-request cost budget",
             "auc_envelope": "cumulative maximum router quality over increasing budgets",
             "fixed_model_references_in_router_curve": False,
-            "development_group_overlap": 0,
+            "test_population": "official test split; all requests are scored",
+            "validation_test_source_group_overlap": 0,
             "multimodal_seeds": list(SCENARIO_SEEDS["multimodal"]),
             "text_and_chinese_seeds": [20260917],
             "run_aggregation": "pointwise mean budget curve before curve-level metrics",
@@ -164,7 +165,7 @@ def build_report_results(runs: dict, *, data_revision: str) -> dict:
             }
             audit = cards[seeds[0]]["split_audit"]
             if "split_audit" in output and output["split_audit"] != audit:
-                raise ValueError("Methods use different source-group exclusions")
+                raise ValueError("Methods use different test or validation populations")
             output["split_audit"] = audit
         for split in expected_splits:
             rows = {name: method["splits"][split] for name, method in output["methods"].items()}

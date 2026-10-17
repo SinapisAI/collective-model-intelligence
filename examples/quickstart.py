@@ -45,7 +45,7 @@ def main() -> None:
         load_kwargs = {"cache_dir": args.cache_dir}
         train = load_routing_split(args.scenario, "train", **load_kwargs)
         evaluation = load_routing_split(args.scenario, "validation", **load_kwargs)
-        population = "validation (development only; overlaps published test)"
+        population = "validation (configuration selection; not test scoring)"
     else:
         rng = np.random.default_rng(42)
         train = synthetic_split(rng, 128)
