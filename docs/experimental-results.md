@@ -67,7 +67,7 @@ All Multimodal methods share frozen **CLIP ViT-B/32** features: pool full-text c
 
 Multimodal metrics are computed **after pointwise averaging on the shared nominal-budget grid**. Their ± values are exact run-bootstrap standard errors, enumerating all 27 ordered resamples of the three curves. They are not sample standard deviations of per-run peaks or nAUCs. Macro nAUC is the equal mean of six split values: **0.6360 for Mio**, **0.6183 for MLP**.
 
-![Supplementary RobustRouteBench quality–cost figure from the corrected report snapshot.](assets/robustroutebench.png)
+![Supplementary RobustRouteBench quality–cost figure.](assets/robustroutebench.png)
 
 The figure is retained as a supplementary artifact; the current report presents [overall](../tech-report.pdf) and [variation-level](../tech-report.pdf) tables. Mio leads Text Robust and both Multimodal splits, but not Text Standard or either Chinese split. Multimodal standard and robust populations are independently sampled, so their difference is not a paired perturbation effect.
 

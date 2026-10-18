@@ -77,7 +77,7 @@ nominal budget. Stored latency is a historical outcome, not a live endpoint guar
 | Artifact | Convention |
 | --- | --- |
 | Public RobustRouteBench arrays | CNY; historical USD proxies converted at **1 USD = 7.2 CNY** |
-| Report §6.3 tables and frozen results | Text/Multimodal use USD proxy units; Chinese uses CNY |
+| Supplementary cost tables and frozen results | Text/Multimodal use USD proxy units; Chinese uses CNY |
 | Mio public-task tracker (§6.1) | Total CNY divided by method-specific evaluation count; source conversion **1 USD = 7 CNY** |
 
 Mio public-task means equally weight nine normalized scores and per-request costs;
