@@ -60,12 +60,7 @@ python -m examples.reproduce_report --mode replay --output runs/report-replay
 ```bibtex
 @misc{sinapisaiteam2026collectivemodelintelligencecharacterizing,
   title={Toward Collective Model Intelligence: Characterizing and Coordinating Models},
-  author={{SinapisAI Team} and Jian-Dong Liu and Qun Dai and Zhendong Du and Guannan Lai and Hao-Yu
-          Liu and Yi-Fan Ma and Zi-Yu Mao and Tengzhong Sun and Xin-Yi Zhang and Zi-Chen Zhao and
-          Gelin Bian and Zongyuan Cai and Ju Cang and Zhangqin Chen and Shilei Gu and Guoding Ji and
-          Taojian Jiang and Hao-Xuan Ma and Fan Wu and Lin-Xing Wu and Tao Yu and Xiao Zhang and
-          Tianyi Zhou and Rong Gu and Ming Li and Zhi-Hao Tan and Han-Jia Ye and Yang Yu and
-          De-Chuan Zhan},
+  author={{SinapisAI Team} and Jian-Dong Liu and Qun Dai and Zhendong Du and Guannan Lai and Hao-Yu Liu and Yi-Fan Ma and Zi-Yu Mao and Tengzhong Sun and Xin-Yi Zhang and Zi-Chen Zhao and Gelin Bian and Zongyuan Cai and Ju Cang and Zhangqin Chen and Shilei Gu and Guoding Ji and Taojian Jiang and Hao-Xuan Ma and Fan Wu and Lin-Xing Wu and Tao Yu and Xiao Zhang and Tianyi Zhou and Rong Gu and Ming Li and Zhi-Hao Tan and Han-Jia Ye and Yang Yu and De-Chuan Zhan},
   year={2026},
   eprint={2610.24739},
   archivePrefix={arXiv},
