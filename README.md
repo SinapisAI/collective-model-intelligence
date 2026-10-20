@@ -4,7 +4,7 @@
 
 **Toward Collective Model Intelligence: Characterizing and Coordinating Models**
 
-[**Tech Report**](https://arxiv.org/abs/2610.24739) · [Results](docs/experimental-results.md) · [Try Mio](https://sinapis.ai) · [Open-Source Dataset](https://huggingface.co/datasets/SinapisAI/RobustRouteBench) · [中文](README.zh-CN.md)
+[**Tech Report (arXiv)**](https://arxiv.org/abs/2610.24739) · [Results](docs/experimental-results.md) · [Try Mio](https://sinapis.ai) · [Open-Source Dataset](https://huggingface.co/datasets/SinapisAI/RobustRouteBench) · [中文](README.zh-CN.md)
 
 ## Mio 1.0 Lite
 
