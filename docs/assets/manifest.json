@@ -23,7 +23,7 @@
       "renderer": "PyMuPDF; crop the embedded report figure and render at 1800-pixel target width"
     },
     {
-      "source": "tech-report.pdf",
+      "source": "https://raw.githubusercontent.com/SinapisAI/collective-model-intelligence/0920e71ffc0d1b42aec4f856da540d5a98d59543/tech-report.pdf",
       "source_sha256": "bae1aa28714b49c897d8603fa6694d0f8d31d79b6995f5cd1d477326085d03b7",
       "output": "mio-overview.png",
       "output_sha256": "1d6df451ed9de02fa4aa8c69d1ab6236d0f11d35c024cd9346669294a7e2fd51",
@@ -39,7 +39,7 @@
       "purpose": "Full opening overview, including the Mio 1.0 Lite heading, collaboration tagline, and result summary."
     },
     {
-      "source": "tech-report.pdf",
+      "source": "https://raw.githubusercontent.com/SinapisAI/collective-model-intelligence/0920e71ffc0d1b42aec4f856da540d5a98d59543/tech-report.pdf",
       "source_sha256": "bae1aa28714b49c897d8603fa6694d0f8d31d79b6995f5cd1d477326085d03b7",
       "output": "mio-public-performance.png",
       "output_sha256": "498f67821198c905eab9a3b7d4fd80b4e5696d574c588f5daf76a219e0e081e3",
@@ -102,5 +102,5 @@
   "report_source_mode": "provided-pdf",
   "report_captured_at_utc": "2026-10-17T13:10:09.489987+00:00",
   "original_report_commit": "2fb0244ac7bbaca63464738f87647c2fe73019c6",
-  "report_source": "tech-report.pdf"
+  "report_source": "https://raw.githubusercontent.com/SinapisAI/collective-model-intelligence/0920e71ffc0d1b42aec4f856da540d5a98d59543/tech-report.pdf"
 }

@@ -2,7 +2,7 @@
 
 Experimental settings for Section 6.2, **Characterizing Models with Less Evaluation**. Both studies use evaluation data from **18 benchmarks** and normalized scores in [0,1], including partial credit.
 
-[Tech Report](../tech-report.pdf) · [Experimental results](experimental-results.md#model-eval-characterizing-models-with-less-evaluation)
+[Tech Report](https://arxiv.org/abs/2610.24739) · [Experimental results](experimental-results.md#model-eval-characterizing-models-with-less-evaluation)
 
 These studies use separate model and query inventories from RobustRouteBench. The **Graph** predictor is distinct from the **GraphRouter** routing baseline. Results appear in report §6.2; predictor implementations and full response tables are not released.
 

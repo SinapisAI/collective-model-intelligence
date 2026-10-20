@@ -49,7 +49,7 @@ report = [
 
 [project.urls]
 Homepage = "https://sinapis.ai"
-Report = "https://github.com/SinapisAI/collective-model-intelligence/blob/main/tech-report.pdf"
+Report = "https://arxiv.org/abs/2610.24739"
 Dataset = "https://huggingface.co/datasets/SinapisAI/RobustRouteBench"
 Documentation = "https://github.com/SinapisAI/collective-model-intelligence#readme"
 Repository = "https://github.com/SinapisAI/collective-model-intelligence"
