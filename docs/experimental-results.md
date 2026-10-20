@@ -2,7 +2,7 @@
 
 [← Project home](../README.md) · [Reproduction guide](reproducibility.md)
 
-Results for Sections 6.1–6.4 of the [technical report](../tech-report.pdf).
+Results for Sections 6.1–6.4 of the [technical report](https://arxiv.org/abs/2610.24739).
 
 ## Mio 1.0 Lite: public benchmarks
 
@@ -69,7 +69,7 @@ Multimodal metrics are computed **after pointwise averaging on the shared nomina
 
 ![Supplementary RobustRouteBench quality–cost figure.](assets/robustroutebench.png)
 
-The figure is retained as a supplementary artifact; the current report presents [overall](../tech-report.pdf) and [variation-level](../tech-report.pdf) tables. Mio leads Text Robust and both Multimodal splits, but not Text Standard or either Chinese split. Multimodal standard and robust populations are independently sampled, so their difference is not a paired perturbation effect.
+The figure is retained as a supplementary artifact; the current report presents [overall](https://arxiv.org/abs/2610.24739) and [variation-level](https://arxiv.org/abs/2610.24739) tables. Mio leads Text Robust and both Multimodal splits, but not Text Standard or either Chinese split. Multimodal standard and robust populations are independently sampled, so their difference is not a paired perturbation effect.
 
 nAUC integrates the cumulative-maximum quality curve on the **linear nominal-budget axis**, with no inserted fixed-model points. The supplementary figure displays realized cost on a logarithmic axis. These axes have different meanings; the badge is not the geometric area under that display. `Cost@τ` is the minimum realized cost of actual selector points meeting the target. [Metric definitions and runnable reproduction →](reproducibility.md#metric-compatibility)
 

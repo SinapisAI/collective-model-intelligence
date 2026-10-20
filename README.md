@@ -4,7 +4,7 @@
 
 **Toward Collective Model Intelligence: Characterizing and Coordinating Models**
 
-[**Tech Report**](tech-report.pdf) · [Results](docs/experimental-results.md) · [Try Mio](https://sinapis.ai) · [Open-Source Dataset](https://huggingface.co/datasets/SinapisAI/RobustRouteBench) · [中文](README.zh-CN.md)
+[**Tech Report**](https://arxiv.org/abs/2610.24739) · [Results](docs/experimental-results.md) · [Try Mio](https://sinapis.ai) · [Open-Source Dataset](https://huggingface.co/datasets/SinapisAI/RobustRouteBench) · [中文](README.zh-CN.md)
 
 ## Mio 1.0 Lite
 
@@ -58,13 +58,19 @@ python -m examples.reproduce_report --mode replay --output runs/report-replay
 ## Citation and license
 
 ```bibtex
-@techreport{sinapisai2026collectivemodelintelligence,
-  title       = {Toward Collective Model Intelligence:
-                 Characterizing and Coordinating Models},
-  author      = {{SinapisAI Team}},
-  institution = {SinapisAI},
-  year        = {2026},
-  url         = {https://github.com/SinapisAI/collective-model-intelligence}
+@misc{sinapisaiteam2026collectivemodelintelligencecharacterizing,
+  title={Toward Collective Model Intelligence: Characterizing and Coordinating Models},
+  author={{SinapisAI Team} and Jian-Dong Liu and Qun Dai and Zhendong Du and Guannan Lai and Hao-Yu
+          Liu and Yi-Fan Ma and Zi-Yu Mao and Tengzhong Sun and Xin-Yi Zhang and Zi-Chen Zhao and
+          Gelin Bian and Zongyuan Cai and Ju Cang and Zhangqin Chen and Shilei Gu and Guoding Ji and
+          Taojian Jiang and Hao-Xuan Ma and Fan Wu and Lin-Xing Wu and Tao Yu and Xiao Zhang and
+          Tianyi Zhou and Rong Gu and Ming Li and Zhi-Hao Tan and Han-Jia Ye and Yang Yu and
+          De-Chuan Zhan},
+  year={2026},
+  eprint={2610.24739},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI},
+  url={https://arxiv.org/abs/2610.24739},
 }
 ```
 

@@ -9,7 +9,7 @@ authors:
 repository-code: https://github.com/SinapisAI/collective-model-intelligence
 url: https://sinapis.ai
 abstract: >-
-  Report PDF, benchmark loaders, and research code accompanying Toward Collective Model
+  Benchmark loaders and research code accompanying Toward Collective Model
   Intelligence: Characterizing and Coordinating Models. Includes RobustRouteBench
   loading, ORBIT-compatible routing adapters, offline quality-cost evaluation,
   and experimental results.
@@ -20,12 +20,74 @@ keywords:
   - RobustRouteBench
 license: Apache-2.0
 preferred-citation:
-  type: report
+  type: article
   title: 'Toward Collective Model Intelligence: Characterizing and Coordinating Models'
   authors:
     - name: SinapisAI Team
-  institution:
-    name: SinapisAI
+    - family-names: Liu
+      given-names: Jian-Dong
+    - family-names: Dai
+      given-names: Qun
+    - family-names: Du
+      given-names: Zhendong
+    - family-names: Lai
+      given-names: Guannan
+    - family-names: Liu
+      given-names: Hao-Yu
+    - family-names: Ma
+      given-names: Yi-Fan
+    - family-names: Mao
+      given-names: Zi-Yu
+    - family-names: Sun
+      given-names: Tengzhong
+    - family-names: Zhang
+      given-names: Xin-Yi
+    - family-names: Zhao
+      given-names: Zi-Chen
+    - family-names: Bian
+      given-names: Gelin
+    - family-names: Cai
+      given-names: Zongyuan
+    - family-names: Cang
+      given-names: Ju
+    - family-names: Chen
+      given-names: Zhangqin
+    - family-names: Gu
+      given-names: Shilei
+    - family-names: Ji
+      given-names: Guoding
+    - family-names: Jiang
+      given-names: Taojian
+    - family-names: Ma
+      given-names: Hao-Xuan
+    - family-names: Wu
+      given-names: Fan
+    - family-names: Wu
+      given-names: Lin-Xing
+    - family-names: Yu
+      given-names: Tao
+    - family-names: Zhang
+      given-names: Xiao
+    - family-names: Zhou
+      given-names: Tianyi
+    - family-names: Gu
+      given-names: Rong
+    - family-names: Li
+      given-names: Ming
+    - family-names: Tan
+      given-names: Zhi-Hao
+    - family-names: Ye
+      given-names: Han-Jia
+    - family-names: Yu
+      given-names: Yang
+    - family-names: Zhan
+      given-names: De-Chuan
+  journal: arXiv
   year: 2026
   month: 10
-  url: https://github.com/SinapisAI/collective-model-intelligence
+  date-published: 2026-10-17
+  identifiers:
+    - type: other
+      value: 'arXiv:2610.24739'
+      description: arXiv identifier
+  url: https://arxiv.org/abs/2610.24739
